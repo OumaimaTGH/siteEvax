@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - src/Components/espaceCitoyen/infosCitoyen/infosCitoyen.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://github.com/the-simian/es6-plato">ES6 Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+      <li class="active">
+        <a href="display.html">Summary Display</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>src/Components/espaceCitoyen/infosCitoyen/infosCitoyen.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">63.92</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">207</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">11.23</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.54</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import React from &#039;react&#039;
+import &#039;antd/dist/antd.css&#039;
+import &#039;./infos.css&#039;
+
+import logo from &#039;../../../Assets/images/logo3.png&#039;
+import { Image,Menu, Dropdown,Button,
+    Popover,Input,Typography,Select,
+    Card,Row, Col,Steps,Divider} from &#039;antd&#039;;
+import { DownOutlined } from &#039;@ant-design/icons&#039;;
+import num from &#039;../../../Assets/images/numero-vert.20f0a520.png&#039;
+
+export const image_name = num;
+
+const { Title } = Typography;
+
+const { Option } = Select;
+
+const { Step } = Steps;
+
+const { TextArea } = Input;
+
+const content = (
+    &lt;div&gt;
+      &lt;p&gt;&lt;h5&gt;&lt;p style={{color:&#039;red&#039;}}&gt;*&lt;/p&gt;Ajouter un nouvel abus&lt;/h5&gt;&lt;/p&gt;
+      &lt;TextArea className=&quot;text-area&quot; rows={3} /&gt;
+      &lt;div&gt;
+      &lt;Button className=&quot;btn-annuler&quot; href=&quot;/InfosEspaceCitoyen&quot;&gt;Annuler&lt;/Button&gt;
+      &lt;Button className=&quot;btn-connection&quot; href=&quot;/&quot;&gt;&lt;span style={{color:&#039;white&#039;}}&gt;Connection&lt;/span&gt;&lt;/Button&gt;
+      &lt;/div&gt;
+      
+    &lt;/div&gt;
+  );
+
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
+
+  const content2 = (
+    &lt;div&gt;
+      &lt;p&gt;&lt;h5&gt;&lt;p style={{color:&#039;red&#039;}}&gt;*&lt;/p&gt;type de reclamation&lt;/h5&gt;&lt;/p&gt;
+      &lt;Select className=&quot;select&quot; onChange={handleChange}&gt;
+      &lt;Option value=&quot;vaccination&quot;&gt;Vaccination&lt;/Option&gt;
+      &lt;Option value=&quot;Rappel&quot;&gt;Rappel&lt;/Option&gt;
+      &lt;Option value=&quot;Inscription&quot;&gt;Inscription&lt;/Option&gt;
+      &lt;Option value=&quot;Espace citoyen&quot;&gt;Espace citoyen&lt;/Option&gt;
+    &lt;/Select&gt;
+      &lt;p&gt;&lt;h5&gt;&lt;p style={{color:&#039;red&#039;}}&gt;*&lt;/p&gt;Ajouter une nouvelle reclamation&lt;/h5&gt;&lt;/p&gt;
+      &lt;TextArea className=&quot;text-area&quot; rows={3} /&gt;
+      &lt;div&gt;
+      &lt;Button className=&quot;btn-annuler&quot; href=&quot;/InfosEspaceCitoyen&quot;&gt;Annuler&lt;/Button&gt;
+      &lt;Button className=&quot;btn-connection&quot; href=&quot;/&quot;&gt;&lt;span style={{color:&#039;white&#039;}}&gt;Envoyer&lt;/span&gt;&lt;/Button&gt;
+      &lt;/div&gt;
+      
+    &lt;/div&gt;
+  );
+
+const menu = (
+    &lt;Menu&gt;
+         
+      &lt;Menu.Item disabled &gt;
+      &lt;button className=&quot;sous-btn&quot; disabled&gt;
+        &lt;a target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; href=&quot;https://www.antgroup.com&quot;&gt;
+          Remplir des questionnaires de suivi médicale
+        &lt;/a&gt;
+        &lt;/button&gt;
+      &lt;/Menu.Item&gt;
+      
+      &lt;Menu.Item&gt;
+      &lt;button className=&quot;sous-btn&quot;&gt;
+      &lt;Popover content={content} title={&lt;Title level={3}&gt;Déclarer des abus ou des écarts&lt;br/&gt; lors du processus de vaccination
+      &lt;/Title&gt;} trigger=&quot;click&quot;&gt;
+        &lt;a target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; href=&quot;https://www.aliyun.com&quot;&gt;
+          Déclarer des abus ou des écarts lors du processus de vaccination
+        &lt;/a&gt;
+    &lt;/Popover&gt;
+        &lt;/button&gt;
+      &lt;/Menu.Item&gt;
+
+      &lt;Menu.Item&gt;
+      &lt;button className=&quot;sous-btn&quot;&gt;
+          &lt;Popover content={content2} title={&lt;Title level={3}&gt;Reclamation&lt;/Title&gt;} trigger=&quot;click&quot;&gt;
+        &lt;a target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; href=&quot;https://www.luohanacademy.com&quot;&gt;
+          Réclamation
+        &lt;/a&gt;
+        &lt;/Popover&gt;
+        &lt;/button&gt;
+      &lt;/Menu.Item&gt;
+      
+    &lt;/Menu&gt;
+  );
+
+
+
+  const menu2 = (
+    &lt;Menu style={{borderRadius:&#039;20px&#039;, width:&#039;120px&#039;, marginLeft:&#039;-23px&#039;}}&gt;
+      &lt;Menu.Item style={{textAlign:&#039;center&#039;}} key=&quot;0&quot;&gt;
+        &lt;a href=&quot;&quot;&gt;TN Arabe&lt;/a&gt;
+      &lt;/Menu.Item&gt;
+      &lt;Menu.Item style={{textAlign:&#039;center&#039;}} key=&quot;1&quot;&gt;
+        &lt;a href=&quot;&quot;&gt;EN Anglais&lt;/a&gt;
+      &lt;/Menu.Item&gt;
+      &lt;Menu.Item style={{textAlign:&#039;center&#039;}} key=&quot;2&quot;&gt;FR Français&lt;/Menu.Item&gt;
+    &lt;/Menu&gt;
+  );
+  
+  
+
+function InfosCitoyen(){
+    
+    return(
+        &lt;div className=&quot;container-02&quot;&gt;
+&lt;Divider/&gt;
+        &lt;div className=&quot;nav&quot;&gt;
+            &lt;div&gt;
+            &lt;Image className=&quot;logo1&quot; src={logo} alt=&quot;Logo&quot; preview={false} /&gt;
+            
+            &lt;Image src={num} alt=&quot;Logo&quot; preview={false} className=&quot;numero&quot;/&gt;
+            &lt;/div&gt;
+
+            &lt;Button className=&quot;btn-reclamation&quot;&gt;
+            &lt;Dropdown overlay={menu}&gt;
+                &lt;a className=&quot;ant-dropdown-link&quot; onClick={e =&gt; e.preventDefault()}&gt;
+                Reclamation &lt;DownOutlined /&gt;
+                &lt;/a&gt;
+            &lt;/Dropdown&gt;
+            &lt;/Button&gt;
+
+            &lt;Button className=&quot;btn-lg&quot;&gt;
+            &lt;Dropdown overlay={menu2} trigger={[&#039;click&#039;]}&gt;
+    &lt;a className=&quot;ant-dropdown-link&quot; onClick={e =&gt; e.preventDefault()}&gt;
+      FR Français &lt;DownOutlined /&gt;
+    &lt;/a&gt;
+  &lt;/Dropdown&gt;
+            &lt;/Button&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+        &lt;Card className=&quot;card01&quot;&gt;
+        &lt;Row gutter={16}&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;div style={{fontSize:&#039;20px&#039;, fontWeight:&#039;bold&#039;}}&gt;Informations personnelles&lt;/div&gt;
+      &lt;/Col&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;Button className=&quot;btn01&quot;&gt;Modifier vos données personnelles&lt;/Button&gt;
+      &lt;/Col&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;Button className=&quot;btn02&quot;&gt;Parrainer enfants&lt;/Button&gt;
+      &lt;/Col&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;Button className=&quot;btn03&quot;&gt;&lt;p style={{color:&#039;red&#039;}}&gt;Cloturer mon dossier&lt;/p&gt;&lt;/Button&gt;
+      &lt;/Col&gt;
+    &lt;/Row&gt;
+ 
+
+    &lt;Row className=&quot;row2&quot; gutter={16}&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;div className=&quot;text00&quot;&gt;&lt;b&gt;N°EVAX&lt;/b&gt; : 123456789&lt;/div&gt;
+      &lt;/Col&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;div className=&quot;text01&quot;&gt;&lt;b&gt;Nom et Prénom&lt;/b&gt; : Mariem Nsir&lt;/div&gt;
+      &lt;/Col&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;div className=&quot;text02&quot;&gt;&lt;b&gt;Carte d&#039;indentité nationale&lt;/b&gt; : 01223344&lt;/div&gt;
+      &lt;/Col&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;div className=&quot;text03&quot;&gt;&lt;b&gt;Date de naissance&lt;/b&gt; : 26/09/1997&lt;/div&gt;
+      &lt;/Col&gt;
+    &lt;/Row&gt;
+  &lt;/Card&gt;
+
+  &lt;Card className=&quot;card02&quot;&gt;
+  &lt;Row className=&quot;row2&quot; gutter={16}&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;div style={{fontSize:&#039;20px&#039;, fontWeight:&#039;bold&#039;,marginTop:&#039;-5px&#039;}}&gt;Dossier de vaccination&lt;/div&gt;
+      &lt;/Col&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;Button&gt;&lt;/Button&gt;
+      &lt;/Col&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;Button className=&quot;btn-rdv&quot;&gt;Rendez-vous confirmé&lt;/Button&gt;
+      &lt;/Col&gt;
+      &lt;Col className=&quot;gutter-row&quot; span={6}&gt;
+        &lt;Button className=&quot;btn-effets&quot;&gt;Déclarer les effets indésirables&lt;/Button&gt;
+      &lt;/Col&gt;
+    &lt;/Row&gt;
+
+    &lt;Row&gt;
+    &lt;Steps&gt;
+          &lt;Step status=&quot;finish&quot; title=&quot;Rendez-vous confirmé&quot; /&gt;
+          &lt;Step status=&quot;process&quot; title=&quot;Vaccin réalisé&quot; /&gt;
+          &lt;Step status=&quot;process&quot; title=&quot;Rendez-vous du rappel confirmé&quot; /&gt;
+          &lt;Step status=&quot;wait&quot; title=&quot;Vaccin du rappel confirmé&quot; /&gt;
+          &lt;Step status=&quot;wait&quot; title=&quot;Certificat et pass vaccinal&quot; /&gt;
+        &lt;/Steps&gt;
+    &lt;/Row&gt;
+
+  &lt;/Card&gt;
+
+
+        &lt;/div&gt;
+
+        &lt;/div&gt;
+
+    )
+}
+export default InfosCitoyen;
+</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

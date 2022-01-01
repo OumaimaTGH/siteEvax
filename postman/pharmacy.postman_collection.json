@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "a0f89917-1201-4a62-8200-72e66edd107f",
+		"name": "pharmacy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "find all pharmacy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQyOTYwLCJleHAiOjE2Mzk3NDY1NjB9.G1ev4blCx-iBGXlk5l-GLGs2Llu-qaQuDLR29JsB-48",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/pharmacy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"pharmacy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add pharmacy (commun avec admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY1MzdhYjljN2QxNmY2MWU4YmY2NCIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NTAzODM4LCJleHAiOjE2Mzk1MDc0Mzh9.56EpxGMNfKGUYq1Giyt22uFxs4ijEyahS2GrgmW0AQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name_ar",
+							"value": "صيدلية نبيهة",
+							"type": "text"
+						},
+						{
+							"key": "name_fr",
+							"value": "pharmacie nabeha",
+							"type": "text"
+						},
+						{
+							"key": "n_order",
+							"value": "AZ12345",
+							"type": "text"
+						},
+						{
+							"key": "fix_tel",
+							"value": "50806254",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "FRA",
+							"type": "text"
+						},
+						{
+							"key": "governorate",
+							"value": "monastir",
+							"type": "text"
+						},
+						{
+							"key": "municipality",
+							"value": "monastir",
+							"type": "text"
+						},
+						{
+							"key": "delegation",
+							"value": "skanes",
+							"type": "text"
+						},
+						{
+							"key": "addr_ar",
+							"value": "سقانس",
+							"type": "text"
+						},
+						{
+							"key": "addr_fr",
+							"value": "skanes",
+							"type": "text"
+						},
+						{
+							"key": "cin",
+							"value": "12614820",
+							"type": "text"
+						},
+						{
+							"key": "date_of_birth",
+							"value": "10-10-1991",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "mansouri",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "youssef",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "50806254",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "azert@live.fr",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/pharmacy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"pharmacy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find one pharmacy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQyOTYwLCJleHAiOjE2Mzk3NDY1NjB9.G1ev4blCx-iBGXlk5l-GLGs2Llu-qaQuDLR29JsB-48",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/pharmacy/61bc7e58aa45ca353131645f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"pharmacy",
+						"61bc7e58aa45ca353131645f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update pharmacy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQyOTYwLCJleHAiOjE2Mzk3NDY1NjB9.G1ev4blCx-iBGXlk5l-GLGs2Llu-qaQuDLR29JsB-48",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name_ar",
+							"value": "صيدلية نبيهة",
+							"type": "text"
+						},
+						{
+							"key": "name_fr",
+							"value": "NBH",
+							"type": "text"
+						},
+						{
+							"key": "n_order",
+							"value": "AEZ4444",
+							"type": "text"
+						},
+						{
+							"key": "fix_tel",
+							"value": "88888888",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "AR5555",
+							"type": "text"
+						},
+						{
+							"key": "governorate",
+							"value": "sousse",
+							"type": "text"
+						},
+						{
+							"key": "municipality",
+							"value": "sidi lhani",
+							"type": "text"
+						},
+						{
+							"key": "delegation",
+							"value": "sidi lhani",
+							"type": "text"
+						},
+						{
+							"key": "addr_ar",
+							"value": "سقانس",
+							"type": "text"
+						},
+						{
+							"key": "addr_fr",
+							"value": "skanes",
+							"type": "text"
+						},
+						{
+							"key": "other_tel",
+							"value": "5555",
+							"type": "text"
+						},
+						{
+							"key": "cin",
+							"value": "77777222",
+							"type": "text"
+						},
+						{
+							"key": "date_of_birth",
+							"value": "28/10/1991",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "mansour",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "toy",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "8888888",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "azerty@live.com",
+							"type": "text"
+						},
+						{
+							"key": "fax",
+							"value": "3333333",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/pharmacy/61bc7e58aa45ca353131645f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"pharmacy",
+						"61bc7e58aa45ca353131645f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete pharmacy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY1MzdhYjljN2QxNmY2MWU4YmY2NCIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NTAzODM4LCJleHAiOjE2Mzk1MDc0Mzh9.56EpxGMNfKGUYq1Giyt22uFxs4ijEyahS2GrgmW0AQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/pharmacy/61b8df8a548c3b142940f411",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"pharmacy",
+						"61b8df8a548c3b142940f411"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

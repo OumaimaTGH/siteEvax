@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - src/Components/vaccinationPharmacie/VaccinationPharmacie.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://github.com/the-simian/es6-plato">ES6 Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+      <li class="active">
+        <a href="display.html">Summary Display</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>src/Components/vaccinationPharmacie/VaccinationPharmacie.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">69.79</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">217</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">10.43</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.44</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import React from &quot;react&quot;;
+import &#039;./VaccinationPharmacie.css&#039;;
+import { Form, Input, Button, Select,Radio } from &#039;antd&#039;;
+import RecherchePharmacie from &quot;./RecherchePharmacie&quot;;
+const { Option } = Select;
+const layout = {
+  labelCol: {
+    span: 8,
+  },
+  wrapperCol: {
+    span: 16,
+  },
+};
+const tailLayout = {
+  wrapperCol: {
+    offset: 8,
+    span: 16,
+  },
+};
+
+const VaccinationPharmacie = () =&gt; {
+  const [form] = Form.useForm();
+  const [value, setValue] = React.useState(1);
+
+  const onGenderChange = (value) =&gt; {
+    // eslint-disable-next-line default-case
+//     switch (value) {
+//       case &#039;male&#039;:
+//         form.setFieldsValue({
+//           note: &#039;Hi, man!&#039;,
+//         });
+//         return;
+
+//       case &#039;female&#039;:
+//         form.setFieldsValue({
+//           note: &#039;Hi, lady!&#039;,
+//         });
+//         return;
+
+//       case &#039;other&#039;:
+//         form.setFieldsValue({
+//           note: &#039;Hi there!&#039;,
+//         });
+//     }
+  };
+const onChange = e =&gt; {
+    console.log(&#039;radio checked&#039;, e.target.value);
+    setValue(e.target.value);
+  };
+  const onFinish = (values) =&gt; {
+    console.log(values);
+  };
+
+  const onReset = () =&gt; {
+    form.resetFields();
+  };
+
+ 
+
+  return (
+    &lt;div  className= &quot;contactBlock&quot;&gt;
+
+    &lt;Form {...layout} form={form} name=&quot;control-hooks&quot; onFinish={onFinish}&gt;
+      {/* &lt;Form.Item
+        name=&quot;note&quot;
+        label=&quot;Note&quot;
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      &gt;
+        &lt;Input /&gt;
+      &lt;/Form.Item&gt; */}
+
+
+      &lt;Radio.Group onChange={onChange} value={value}&gt;
+      &lt;Radio value={1}&gt;Recherche par emplacement géographique&lt;/Radio&gt;
+      &lt;Radio value={2} onChange={RecherchePharmacie}&gt;Recherche par nom&lt;/Radio&gt;
+    &lt;/Radio.Group&gt;
+ &lt;br/&gt;
+
+
+      &lt;Form.Item
+        name=&quot;gouvernorat&quot;
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      &gt;
+        &lt;Select
+          placeholder=&quot;Choisir le gouvernorat&quot;
+          onChange={onGenderChange}
+          allowClear
+        &gt;
+          &lt;Option value=&quot;Ariana&quot;&gt;Ariana&lt;/Option&gt;
+          &lt;Option value=&quot;Ben Arous&quot;&gt;Ben Arous&lt;/Option&gt;
+          &lt;Option value=&quot;Béja&quot;&gt;Béja&lt;/Option&gt;
+          &lt;Option value=&quot;Bizerte&quot;&gt;Bizerte&lt;/Option&gt;
+          &lt;Option value=&quot;Gabès&quot;&gt;Gabès&lt;/Option&gt;
+          &lt;Option value=&quot;Gafsa&quot;&gt;Gafsa&lt;/Option&gt;
+          &lt;Option value=&quot;Jendouba&quot;&gt;Jendouba&lt;/Option&gt;
+          &lt;Option value=&quot;Kairouan&quot;&gt;Kairouan&lt;/Option&gt;
+          &lt;Option value=&quot;Kasserine&quot;&gt;Kasserine&lt;/Option&gt;
+          &lt;Option value=&quot;Kébili&quot;&gt;Kébili&lt;/Option&gt;
+          &lt;Option value=&quot;Le Kef&quot;&gt;Le Kef&lt;/Option&gt;
+          &lt;Option value=&quot;Mahdia&quot;&gt;Mahdia&lt;/Option&gt;
+          &lt;Option value=&quot;La Manouba&quot;&gt;La Manouba&lt;/Option&gt;
+          &lt;Option value=&quot;Médenine&quot;&gt;Médenine&lt;/Option&gt;
+          &lt;Option value=&quot;Monastir&quot;&gt;Monastir&lt;/Option&gt;
+          &lt;Option value=&quot;Nabeul&quot;&gt;Nabeul&lt;/Option&gt;
+          &lt;Option value=&quot;Sfax&quot;&gt;Sfax&lt;/Option&gt;
+          &lt;Option value=&quot;Sidi Bouzid&quot;&gt;Sidi Bouzid&lt;/Option&gt;
+          &lt;Option value=&quot;Siliana&quot;&gt;Siliana&lt;/Option&gt;
+          &lt;Option value=&quot;Sousse&quot;&gt;Sousse&lt;/Option&gt;
+          &lt;Option value=&quot;Tataouine&quot;&gt;Tataouine&lt;/Option&gt;
+          &lt;Option value=&quot;Tozeur&quot;&gt;Tozeur&lt;/Option&gt;
+          &lt;Option value=&quot;Tunis&quot;&gt;Tunis&lt;/Option&gt;
+          &lt;Option value=&quot;Zaghouan&quot;&gt;Zaghouan&lt;/Option&gt;
+
+        &lt;/Select&gt;
+      &lt;/Form.Item&gt;
+
+      &lt;Form.Item
+        name=&quot;Choisir la délégation&quot;
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      &gt;
+        &lt;Select
+          placeholder=&quot;Choisir la délégation&quot;
+          onChange={onGenderChange}
+          allowClear
+        &gt;
+          {/*  */}
+        
+        &lt;/Select&gt;
+      &lt;/Form.Item&gt;
+
+      &lt;Form.Item
+        name=&quot;Choisir la commune&quot;
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      &gt;
+        &lt;Select
+          placeholder=&quot;Choisir la commune&quot;
+          onChange={onGenderChange}
+          allowClear
+        &gt;
+        
+        
+        &lt;/Select&gt;
+      &lt;/Form.Item&gt;
+
+      &lt;Form.Item
+        name=&quot;Sélectionnez la pharmacie&quot;
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      &gt;
+        &lt;Select
+          placeholder=&quot;Sélectionnez la pharmacie&quot;
+          onChange={onGenderChange}
+          allowClear
+        &gt;
+       
+        &lt;/Select&gt;
+      &lt;/Form.Item&gt;
+
+
+      &lt;Form.Item
+        noStyle
+        shouldUpdate={(prevValues, currentValues) =&gt; prevValues.gender !== currentValues.gender}
+      &gt;
+        {({ getFieldValue }) =&gt;
+          getFieldValue(&#039;gouvernorat&#039;) === &#039;other&#039; ? (
+            &lt;Form.Item
+              name=&quot;customizeGender&quot;
+              label=&quot;Customize Gender&quot;
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            &gt;
+              &lt;Input /&gt;
+            &lt;/Form.Item&gt;
+          ) : null
+        }
+      &lt;/Form.Item&gt;
+      &lt;Form.Item {...tailLayout}&gt;
+        &lt;Button type=&quot;primary&quot; htmlType=&quot;submit&quot;&gt;
+          Recherche
+        &lt;/Button&gt;
+        &lt;Button htmlType=&quot;button&quot; onClick={onReset}&gt;
+          Annuler
+        &lt;/Button&gt;
+        {/* &lt;Button type=&quot;link&quot; htmlType=&quot;button&quot; onClick={onFill}&gt;
+          Fill form
+        &lt;/Button&gt; */}
+      &lt;/Form.Item&gt;
+    &lt;/Form&gt;
+    &lt;/div&gt;
+  );
+ 
+};
+
+
+export default VaccinationPharmacie;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

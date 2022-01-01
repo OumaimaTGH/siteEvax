@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - src/App.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://github.com/the-simian/es6-plato">ES6 Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+      <li class="active">
+        <a href="display.html">Summary Display</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>src/App.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">77.78</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">85</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">3.13</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.08</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import React from &#039;react&#039;;
+import &#039;./views/Home&#039;;
+import Home from &#039;./views/Home&#039;;
+import Faq from &#039;./views/Faq&#039;;
+
+import &#039;./App.css&#039;;
+import &#039;antd/dist/antd.css&#039;;
+
+import { BrowserRouter } from &#039;react-router-dom&#039;;
+import AppInscription from &#039;./views/inscription&#039;;
+import AppInsCitoyenTitulaire from &#039;./views/inscitoyenTitulaire&#039;;
+import AppInsCitoyenNonTitulaire from &#039;./views/inscitoyenNonTitulaire&#039;;
+import AppInsCitoyenEtranger from &#039;./views//inscitoyenEtranger&#039;;
+import { Switch, Route } from &#039;react-router-dom&#039;;
+// import AppHeader from &#039;./Components/common/header&#039;;
+// import AppFooter from &#039;./Components/common/footer&#039;;
+import AppContact from &#039;./views/contact&#039;;
+import AppHeader from &#039;./Components/header/header&#039;;
+import AppFooter from &#039;./Components/footer/footer&#039;;
+
+import majInscription from &#039;./views/majInscription&#039;;
+import AppInscriptionpharmacie from &#039;./views/inscriptionPharmacie&#039;;
+import AppAdmin from &#039;./views/AppAdmin&#039;
+import {Layout, Breadcrumb } from &#039;antd&#039;;
+import AppCnxCitoyen from &#039;./views/CnxCitoyen&#039;;
+import AppCnxCodeCitoyen from &#039;./views/CnxCodeCitoyen&#039;;
+import AppInfosEspaceCitoyen from &#039;./views/InfosCitoyen&#039;;
+import Certif from &#039;./views/Certif&#039;;
+const { Header, Content, Footer } = Layout;
+
+function App() {
+  return (
+ 
+&lt;switch&gt;
+
+
+    &lt;Layout className=&quot;mainLayout&quot;&gt;
+      &lt;Header&gt;
+        &lt;AppHeader/&gt;
+      &lt;/Header&gt;
+    
+     &lt;Content&gt;
+    
+      &lt;BrowserRouter&gt;
+      &lt;Switch&gt;
+
+          &lt;Route path=&quot;/Visiteur/CnxEspaceCitoyen&quot; component={AppCnxCitoyen}/&gt;
+          &lt;Route path=&quot;/Visiteur/CnxCodeEspaceCitoyen&quot; component={AppCnxCodeCitoyen}/&gt;
+          &lt;Route path=&quot;/Visiteur/InfosEspaceCitoyen&quot; component={AppInfosEspaceCitoyen}/&gt;
+
+          &lt;Route path=&quot;/Visiteur/accueil&quot; component={Home} /&gt;
+
+
+          &lt;Route path=&quot;/Visiteur/faq&quot; component={Faq} /&gt;
+          
+
+          &lt;Route path=&quot;/Visiteur/CnxEspaceCitoyen&quot; component={AppCnxCitoyen}/&gt;
+          &lt;Route path=&quot;/Visiteur/CnxCodeEspaceCitoyen&quot; component={AppCnxCodeCitoyen}/&gt;
+
+          &lt;Route path=&quot;/Visiteur/inscription&quot; component={AppInscription} /&gt;
+          &lt;Route path=&quot;/Visiteur/InsCitoyenTitulaire&quot; component={AppInsCitoyenTitulaire} /&gt;
+          &lt;Route path=&quot;/Visiteur/InsCitoyenNonTitulaire&quot; component={AppInsCitoyenNonTitulaire} /&gt;
+          &lt;Route path=&quot;/Visiteur/InsCitoyenEtranger&quot; component={AppInsCitoyenEtranger} /&gt;
+          &lt;Route path=&quot;/Visiteur/contact&quot; component={AppContact} /&gt;
+
+          &lt;Route path=&quot;/Visiteur/maj_inscription&quot; component={majInscription} /&gt;
+
+          &lt;Route path=&quot;/Visiteur/certif&quot; component={Certif} /&gt;
+
+          &lt;Route path=&quot;/Visiteur/pharmacy&quot; component={AppInscriptionpharmacie} /&gt;
+
+      &lt;/Switch&gt;
+      &lt;/BrowserRouter&gt;
+   
+      &lt;/Content&gt;
+       &lt;Footer&gt;
+        &lt;AppFooter/&gt;  
+      &lt;/Footer&gt;      
+    &lt;/Layout&gt;
+    
+    &lt;/switch&gt;
+);
+}
+
+export default App;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

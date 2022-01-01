@@ -1,0 +1,27 @@
+.aut_form {
+    display: flex;
+    place-content: center;
+}
+
+button.ant-btn.ant-btn-primary.login-form-button {
+    width: -webkit-fill-available;
+}
+
+button.ant-btn.ant-btn-secondary.vacc {
+    background-color: #9dea9d;
+}
+
+button.ant-btn.ant-btn-secondary.vacc:hover, .ant-btn:focus {
+    color: #000000cf;
+    border-color: #020000cf;
+    background: #fff;
+}
+button.ant-btn.ant-btn-secondary.mtp {
+    background-color: #ddf16a;
+}
+
+button.ant-btn.ant-btn-secondary.mtp:hover, .ant-btn:focus {
+    color: #000000cf;
+    border-color: #1f1d1dcf;
+    background: #fff;
+}

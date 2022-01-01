@@ -1,0 +1,74 @@
+.container-01 {
+    background-color: lightgray;
+    height: 600px;
+}
+
+.logo1 {
+    height: auto;
+    width: 100%;
+    max-width: 200px;
+    position: relative;
+    display: inline-block;
+    margin-left: 550px;
+    margin-top: 20px;
+}
+
+.card1 {
+    margin-top: 20px;
+    margin-left: 320px;
+    border-radius: 20px;
+}
+
+.input {
+    height: 40px;
+    width: 650px;
+    margin-top: 30px;
+    margin-left: 25px;
+    border-radius: 20px;
+}
+
+.input:hover {
+    border-color: red;
+}
+
+.btn-next {
+    margin-left: 260px;
+    margin-top: 40px;
+    border-radius: 20px;
+    height: 45px;
+    width: 150px;
+    font-size: 15px;
+}
+
+.icon-next {
+    font-size: 25px;
+}
+
+.num {
+    height: 40px;
+    width: 100%;
+    max-width: 220px;
+    position: relative;
+    display: inline-block;
+    margin-left: 560px;
+    margin-top: 20px;
+}
+
+.btn-cnx {
+    margin-left: 10px;
+    margin-top: 30px;
+    border-radius: 20px;
+    height: 40px;
+    width: 150px;
+    font-size: 15px;
+}
+
+.btn-retour {
+    border-radius: 20px;
+    height: 40px;
+    width: 150px;
+    font-size: 15px;
+    margin-left: 190px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}

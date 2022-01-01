@@ -1,0 +1,20 @@
+{
+    "query_status": "ok",
+    "urls": [
+        {
+            "id": "1",
+            "gouvernorat": "Tunis",
+            "délégation": "Hraïria",
+            "municipalité": "Tunis",
+            "nom_centre": "centre ",
+            "date_ajout": "2020-06-28 18:03:53 UTC",
+            "centresdevaccination": "lycée Hraïria",
+            "statut": [
+                "ouvert"
+            ]
+        }
+      
+    ]
+}
+
+

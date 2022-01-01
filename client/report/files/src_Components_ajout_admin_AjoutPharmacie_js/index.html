@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - src/Components/ajout_admin/AjoutPharmacie.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://github.com/the-simian/es6-plato">ES6 Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+      <li class="active">
+        <a href="display.html">Summary Display</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>src/Components/ajout_admin/AjoutPharmacie.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">70.31</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">259</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">13.25</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.88</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import React, { useState, useEffect } from &quot;react&quot;;
+import {DatePicker, Button, Modal, Form, Input, Select } from &quot;antd&quot;;
+import InputGroup from &quot;../../util/InputGroup&quot;;
+import { useSelector } from &quot;react-redux&quot;;
+import Errors from &quot;../../util/Errors&quot;;
+import data from &#039;../data.json&#039;;
+import Selectt from &quot;react-select&quot;;
+
+const { RangePicker } = DatePicker;
+const config = {
+  rules: [
+    {
+      type: &#039;object&#039;,
+      required: true,
+      message: &#039;Please select time!&#039;,
+    },
+  ],
+};
+
+
+const { Option } = Select;
+
+const prefixSelector = (
+  &lt;Form.Item name=&quot;prefix&quot; noStyle&gt;
+    &lt;Select defaultValue=&quot;216&quot; style={{ width: 70 }}&gt;
+      &lt;Option value=&quot;216&quot;&gt;+216&lt;/Option&gt;
+    &lt;/Select&gt;
+  &lt;/Form.Item&gt;
+);
+
+const PharmacieCreateForm = ({
+  visible,
+  onCreate,
+  onCancel,
+  errors,
+  selectors,
+}) =&gt; {
+  const [form] = Form.useForm();
+  const [gouvernorat, setGouvernorat] = useState(null);
+  const [deleg, setDeleg] = useState(null);
+  const [delegList, setDelegList] = useState([]);
+
+  const [mun, setMun] = useState(null);
+  const [munList, setMunList] = useState([]);
+
+  const [link, setLink] = useState(&quot;&quot;);
+
+  const handleGouvernoratChange = (obj) =&gt; {
+    setGouvernorat(obj);
+    setDelegList(obj.delegations);
+    setDeleg(null);
+  };
+
+
+  const handleDelegChange = (obj) =&gt; {
+    setDeleg(obj);
+    setMunList(obj.municipalites);
+    setMun(null);
+  };
+  
+  // handle change event of the delegation dropdown
+  const handleDeleguageChange = (obj) =&gt; {
+    setDeleg(obj);
+  };
+
+  const handleMunicipalitesChange = (obj) =&gt; {
+    setMun(obj);
+  };
+
+  // generate the link when both dropdowns are selected
+  useEffect(() =&gt; {
+    if (gouvernorat &amp;&amp; deleg) {
+      setLink(`https://www.${gouvernorat.url}/search?q=Clue+Mediator&amp;gl=${gouvernorat.gouvernorat_code}&amp;hl=${deleg.code}`);
+    }
+  }, [gouvernorat, deleg]);
+  
+  return (
+    &lt;Modal
+      visible={visible}
+      title=&quot;Ajouter Un Pharmacie De Vaccination&quot;
+      okText=&quot;Create&quot;
+      cancelText=&quot;Cancel&quot;
+      onCancel={onCancel}
+      onOk={() =&gt; {
+        form
+          .validateFields()
+          .then((values) =&gt; {
+            onCreate(values);
+          })
+          .catch((info) =&gt; {
+            console.log(&quot;Validate Failed:&quot;, info);
+          });
+      }}
+    &gt;
+      &lt;Form
+        form={form}
+        layout=&quot;vertical&quot;
+        name=&quot;form_in_modal&quot;
+        initialValues={{
+          modifier: &quot;public&quot;,
+        }}
+      &gt;
+      &lt;h3&gt;Informations du local&lt;/h3&gt;
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.name_ar&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;le nom du pharmacie en arabe&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.name_ar} /&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.name_fr&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;le nom du pharmacie en français&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.name_fr} /&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.n_order&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;le numero d&#039;ordre&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.n_order} /&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.fix_tel&quot;
+          label=&quot;Numéro de fixe&quot;
+          &gt;
+            &lt;Input addonBefore={prefixSelector} style={{ width: &#039;80%&#039; }} /&gt;
+          &lt;/Form.Item&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.other_tel&quot;
+          label=&quot;Autre Numéro de téléphone&quot;
+          &gt;
+            &lt;Input addonBefore={prefixSelector} style={{ width: &#039;80%&#039; }} /&gt;
+          &lt;/Form.Item&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.category&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;catégorie&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.category} /&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.governorate&quot;&gt;
+            &lt;Selectt placeholder=&quot;Selectionner gouvernorat&quot;
+          value={gouvernorat}
+          options={data}
+          onChange={handleGouvernoratChange}
+          getOptionLabel={x =&gt; x.gouvernorat}
+          getOptionValue={x =&gt; x.gouvernorat_code}
+            /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.governorate} /&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.delegation&quot;&gt;
+          &lt;Selectt placeholder=&quot;Selectionner Delegation&quot;
+          value={deleg}
+          options={delegList}
+          onChange={handleDelegChange}
+          getOptionLabel={x =&gt; x.name}
+          getOptionValue={x =&gt; x.code}
+       /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.delegation} /&gt;
+        &lt;/div&gt;
+
+        
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.municipality&quot;&gt;
+            &lt;Selectt placeholder=&quot;Selectionner municipalité&quot;
+            value={mun}
+            options={munList}
+            onChange={handleMunicipalitesChange}
+            getOptionLabel={x =&gt; x.name}
+            getOptionValue={x =&gt; x.code}
+            /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.municipality} /&gt;
+        &lt;/div&gt;
+
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.addr_ar&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;adresse en arabe&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.address} /&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;local.addr_fr&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;adresse en français&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.address} /&gt;
+        &lt;/div&gt;
+        
+        &lt;h3&gt;Informations du propriétaire&lt;/h3&gt;
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;owner.cin&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;le cin du propriétaire&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.name} /&gt;
+        &lt;/div&gt;
+
+        &lt;Form.Item name=&quot;owner.date_of_birth&quot; label=&quot;Date de naissance&quot; {...config}&gt;
+        &lt;DatePicker /&gt;
+        &lt;/Form.Item&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;owner.firstname&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;le nom du propriétaire&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.name} /&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;owner.lastname&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;le nom du propriétaire&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.name} /&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;owner.phone&quot;
+          label=&quot; Numéro de téléphone&quot;
+          &gt;
+            &lt;Input addonBefore={prefixSelector} style={{ width: &#039;80%&#039; }} /&gt;
+          &lt;/Form.Item&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;owner.email&quot;&gt;
+            &lt;Input type=&quot;email&quot; placeholder=&quot;le mail du propriétaire&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.name} /&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;Form.Item name=&quot;owner.fax&quot;&gt;
+            &lt;Input type=&quot;text&quot; placeholder=&quot;le fax du propriétaire&quot; /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Errors errors={errors.name} /&gt;
+        &lt;/div&gt;
+
+        &lt;Form.Item
+          name=&quot;modifier&quot;
+          className=&quot;collection-create-form_last-form-item&quot;
+        &gt;&lt;/Form.Item&gt;
+      &lt;/Form&gt;
+    &lt;/Modal&gt;
+  );
+};
+
+export default PharmacieCreateForm;
+</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

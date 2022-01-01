@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - src/pages/Pharmacie.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://github.com/the-simian/es6-plato">ES6 Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+      <li class="active">
+        <a href="display.html">Summary Display</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>src/pages/Pharmacie.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">65.56</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">218</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">16.70</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.83</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import {
+  Table,
+  Tag,
+  Input,
+  Button,
+  InputNumber,
+  Popconfirm,
+  Form,
+  Typography,
+} from &quot;antd&quot;;
+import React, { useEffect, useState } from &quot;react&quot;;
+import { useSelector, useDispatch } from &quot;react-redux&quot;;
+import PharmacieCreateForm from &quot;../Components/ajout_admin/AjoutPharmacie&quot;;
+import PharmacieUpdateForm from &quot;../Components/ajout_admin/UpdatePharmacie&quot;;
+import {
+  Create,
+  DeletePharmacy,
+  FindAll,
+  UpdatePharmacy,
+  FindSingle,
+} from &quot;../redux/actions/PharmacyActions&quot;;
+import selectors from &quot;../Components/data.json&quot;;
+const EditableCell = ({
+  editing,
+  dataIndex,
+  title,
+  inputType,
+  record,
+  index,
+  children,
+  ...restProps
+}) =&gt; {
+  const inputNode = inputType === &quot;number&quot; ? &lt;InputNumber /&gt; : &lt;Input /&gt;;
+  return (
+    &lt;td {...restProps}&gt;
+      {editing ? (
+        &lt;Form.Item
+          name={dataIndex}
+          style={{
+            margin: 0,
+          }}
+          rules={[
+            {
+              required: true,
+              message: `Please Input ${title}!`,
+            },
+          ]}
+        &gt;
+          {inputNode}
+        &lt;/Form.Item&gt;
+      ) : (
+        children
+      )}
+    &lt;/td&gt;
+  );
+};
+
+const Pharmacie = (props) =&gt; {
+  const pharmacies = useSelector((state) =&gt; state.pharmacies);
+  const errors = useSelector((state) =&gt; state.errors);
+  const [pharmacy, setpharmacy] = useState([]);
+  const dispatch = useDispatch();
+  const [visible, setVisible] = useState(false);
+  const [visibleUpdate, setvisibleUpdate] = useState(false);
+  const onCreate = (values) =&gt; {
+    dispatch(Create(values, setVisible));
+  };
+  const onUpdate = (values, id) =&gt; {
+    dispatch(UpdatePharmacy(values, id, setvisibleUpdate));
+  };
+  const [form] = Form.useForm();
+  const [editingKey, setEditingKey] = useState(&quot;&quot;);
+
+  const cancel = () =&gt; {
+    setEditingKey(&quot;&quot;);
+  };
+
+  useEffect(() =&gt; {
+    dispatch(FindAll());
+    setpharmacy(pharmacies.all);
+  }, [pharmacies]);
+
+  const columns = [
+    {
+      title: &quot;NOM pharmacie&quot;,
+      dataIndex: [&quot;local&quot;, &quot;name_fr&quot;],
+      key: &quot;name&quot;,
+      editable: true,
+    },
+    {
+      title: &quot;ordre&quot;,
+      dataIndex: [&quot;local&quot;, &quot;n_order&quot;],
+      key: &quot;name&quot;,
+      editable: true,
+    },
+    {
+      title: &quot;GOUVERNORAT&quot;,
+      dataIndex: [&quot;local&quot;, &quot;governorate&quot;],
+      key: &quot;governorate&quot;,
+      editable: true,
+    },
+    {
+      title: &quot;MUNICIPALITÉ&quot;,
+      dataIndex: [&quot;local&quot;, &quot;municipality&quot;],
+      key: &quot;municipality&quot;,
+      editable: true,
+    },
+    {
+      title: &quot;DÉLÉGATION&quot;,
+      dataIndex: [&quot;local&quot;, &quot;delegation&quot;],
+      key: &quot;delegation&quot;,
+      editable: true,
+    },
+    {
+      title: &quot;ADRESSE &quot;,
+      dataIndex: [&quot;local&quot;, &quot;addr_fr&quot;],
+      key: &quot;address&quot;,
+      editable: true,
+    },
+    {
+      title: &quot;nom owner&quot;,
+      key: &quot;quantity&quot;,
+      dataIndex: [&quot;owner&quot;, &quot;firstname&quot;],
+      editable: true,
+    },
+    {
+      title: &quot;prénom owner&quot;,
+      key: &quot;quantity&quot;,
+      dataIndex: [&quot;owner&quot;, &quot;lastname&quot;],
+      editable: true,
+    },
+/*     {
+      title: &quot;MODIFIER&quot;,
+      key: &quot;modifier_centres_devaccination&quot;,
+      dataIndex: &quot;modifier_centres_devaccination&quot;,
+
+      render: (_, record) =&gt; {
+        return (
+          &lt;Typography.Link
+            disabled={editingKey !== &quot;&quot;}
+            onClick={() =&gt; {
+              setvisibleUpdate(true);
+              dispatch(FindSingle(record._id));
+            }}
+          &gt;
+            Modifier
+          &lt;/Typography.Link&gt;
+        );
+      },
+    }, */
+    {
+      title: &quot;SUPPRIMER&quot;,
+      key: &quot;DeletePharmacy&quot;,
+      dataIndex: &quot;DeletePharmacy&quot;,
+      render: (_, record) =&gt; (
+        &lt;&gt;
+          &lt;Button
+            type=&quot;primary&quot;
+            danger
+            onClick={() =&gt; {
+              dispatch(DeletePharmacy(record._id));
+            }}
+          &gt;
+            Supprimer
+          &lt;/Button&gt;
+        &lt;/&gt;
+      ),
+    },
+  ];
+
+  return (
+    &lt;Form form={form} component={false}&gt;
+      &lt;Button
+        type=&quot;ajouter&quot;
+        onClick={() =&gt; {
+          setVisible(true);
+        }}
+        danger
+      &gt;
+        Ajouter Une pharmacie
+      &lt;/Button&gt;
+      &lt;PharmacieCreateForm
+        visible={visible}
+        onCreate={onCreate}
+        onCancel={() =&gt; {
+          setVisible(false);
+        }}
+        errors={errors}
+        selectors={selectors}
+      /&gt;
+      &lt;PharmacieUpdateForm
+        visible={visibleUpdate}
+        data={pharmacies.single ? pharmacies.single : {}}
+        onUpdate={onUpdate}
+        onCancel={() =&gt; {
+          setvisibleUpdate(false);
+        }}
+      /&gt;
+      &lt;h1&gt;Les Pharmacies De vaccination&lt;/h1&gt;
+      &lt;Table
+        components={{
+          body: {
+            cell: EditableCell,
+          },
+        }}
+        bordered
+        dataSource={pharmacy}
+        columns={columns}
+        rowClassName=&quot;editable-row&quot;
+        pagination={{
+          onChange: cancel,
+        }}
+      /&gt;
+    &lt;/Form&gt;
+  );
+};
+
+export default Pharmacie;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

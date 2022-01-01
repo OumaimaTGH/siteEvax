@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - src/Components/inscription/citoyenCIN/questionnaire_Etape3.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://github.com/the-simian/es6-plato">ES6 Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+      <li class="active">
+        <a href="display.html">Summary Display</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>src/Components/inscription/citoyenCIN/questionnaire_Etape3.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">59.61</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">257</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">19.11</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.88</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import React, { useState, Component, useEffect } from &quot;react&quot;;
+import {
+  Alert,
+  DatePicker,
+  Form,
+  Input,
+  Button,
+  Select,
+} from &quot;antd&quot;;
+import data from &quot;../../data.json&quot;;
+import { useDispatch, useSelector } from &quot;react-redux&quot;;
+
+import HealthDetails from &quot;../maj_inscription/health-details&quot;;
+import { Create } from &quot;../../../redux/actions/CitizenActions&quot;;
+
+const { RangePicker } = DatePicker;
+const { Option } = Select;
+
+
+
+
+function AppQuestionnaire_Etape3(props) {
+  const errors = useSelector((state) =&gt; state.errors);
+  const dispatch = useDispatch()
+  const [message, setmessage] = useState(null)
+  const pivot = useSelector(state =&gt; state.pivot)
+
+  /* const onChange = e =&gt; {
+      console.log(&#039;radio checked&#039;, e.target.value);
+      setValue(e.target.value);
+    };
+   */
+  const [form, setform] = useState(null);
+
+  const HandleChange = (e) =&gt; {
+    setform({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onFinish = () =&gt; {
+    dispatch(Create(form))
+  };
+
+  useEffect(() =&gt; {
+    setmessage(pivot)
+  }, [message])
+  
+  return (
+    &lt;&gt;
+    {pivot  === null ? (
+      &lt;Form name=&quot;normal_login&quot; className=&quot;login-form&quot; onFinish={onFinish}&gt;
+      &lt;div id=&quot;step1&quot;&gt;
+        &lt;div style={{ display: &quot;flex&quot;, justifyContent: &quot;space-evenly&quot; }}&gt;
+          &lt;Form.Item label=&quot;Cin&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;100%&quot; }}
+              name=&quot;cin&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.cin}&lt;/span&gt;}
+          &lt;/Form.Item&gt;
+          &lt;Form.Item label=&quot;date de naissance&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;100%&quot; }}
+              name=&quot;date_of_birth&quot;
+              type=&quot;date&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; (
+              &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.date_of_birth}&lt;/span&gt;
+            )}
+          &lt;/Form.Item&gt;
+          &lt;Form.Item label=&quot;Téléphone&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;100%&quot; }}
+              name=&quot;phone&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.phone}&lt;/span&gt;}
+          &lt;/Form.Item&gt;
+
+          &lt;Form.Item name=&quot;email&quot; label=&quot;email&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;100%&quot; }}
+              name=&quot;email&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.email}&lt;/span&gt;}
+          &lt;/Form.Item&gt;
+        &lt;/div&gt;
+
+        &lt;div style={{ display: &quot;flex&quot;, justifyContent: &quot;space-evenly&quot; }}&gt;
+          &lt;Form.Item label=&quot;Genre&quot;&gt;
+            &lt;select
+              style={{ width: &quot;160px&quot; }}
+              name=&quot;sexe&quot;
+              onChange={HandleChange}
+              className=&quot;ant-input&quot;
+            &gt;
+              &lt;option value=&quot;Femme&quot; selected&gt;Femme&lt;/option&gt;
+              &lt;option value=&quot;Homme&quot;&gt;Homme&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.sexe}&lt;/span&gt;}
+          &lt;/Form.Item&gt;
+          &lt;Form.Item label=&quot;Nom&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;100%&quot; }}
+              name=&quot;firstname&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.firstname}&lt;/span&gt;}
+          &lt;/Form.Item&gt;
+          &lt;Form.Item label=&quot;Prénom&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;100%&quot; }}
+              name=&quot;lastname&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.lastname}&lt;/span&gt;}
+          &lt;/Form.Item&gt;
+        &lt;/div&gt;
+        &lt;div style={{ display: &quot;flex&quot;, justifyContent: &quot;space-evenly&quot; }}&gt;
+          &lt;Form.Item label=&quot;Nom père&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;80%&quot; }}
+              name=&quot;father_lastname&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; (
+              &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.father_lastname}&lt;/span&gt;
+            )}
+          &lt;/Form.Item&gt;
+          &lt;Form.Item label=&quot;Nom grand père&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;80%&quot; }}
+              name=&quot;grandfather_lastname&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; (
+              &lt;span style={{ color: &quot;red&quot; }}&gt;
+                {errors.grandfather_lastname}
+              &lt;/span&gt;
+            )}
+          &lt;/Form.Item&gt;
+          &lt;Form.Item label=&quot;Prénom mère&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;80%&quot; }}
+              name=&quot;mother_firstname&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; (
+              &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.mother_firstname}&lt;/span&gt;
+            )}
+          &lt;/Form.Item&gt;
+          &lt;Form.Item label=&quot;nom mère&quot;&gt;
+            &lt;Input
+              style={{ width: &quot;80%&quot; }}
+              name=&quot;mother_lastname&quot;
+              onChange={HandleChange}
+            /&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; (
+              &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.mother_lastname}&lt;/span&gt;
+            )}
+          &lt;/Form.Item&gt;
+        &lt;/div&gt;
+
+        &lt;div style={{ display: &quot;flex&quot;, justifyContent: &quot;space-evenly&quot; }}&gt;
+          &lt;label&gt;Gouvernorat &lt;/label&gt;
+          &lt;Form.Item&gt;
+            &lt;select
+              style={{ width: &quot;160px&quot; }}
+              name=&quot;governorate&quot;
+              onChange={HandleChange}
+              className=&quot;ant-input&quot;
+            &gt;
+              &lt;option value=&quot;Tunis&quot; selected&gt;Tunis&lt;/option&gt;
+              &lt;option value=&quot;Beja&quot;&gt;Beja&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; (
+              &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.gouvernorate}&lt;/span&gt;
+            )}
+          &lt;/Form.Item&gt;
+
+          &lt;label&gt; Délégation &lt;/label&gt;
+          &lt;Form.Item&gt;
+            &lt;select
+              style={{ width: &quot;160px&quot; }}
+              name=&quot;delegation&quot;
+              onChange={HandleChange}
+              className=&quot;ant-input&quot;
+            &gt;
+              &lt;option value=&quot;Tunis&quot; selected&gt;Tunis&lt;/option&gt;
+              &lt;option value=&quot;Beja&quot;&gt;Beja&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; (
+              &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.delegation}&lt;/span&gt;
+            )}
+          &lt;/Form.Item&gt;
+
+          &lt;label&gt; Municipalité &lt;/label&gt;
+          &lt;Form.Item&gt;
+            &lt;select
+              style={{ width: &quot;160px&quot; }}
+              name=&quot;municipality&quot;
+              onChange={HandleChange}
+              className=&quot;ant-input&quot;
+            &gt;
+              &lt;option value=&quot;Tunis&quot; selected&gt;Tunis&lt;/option&gt;
+              &lt;option value=&quot;Beja&quot;&gt;Beja&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;br /&gt;
+            {errors &amp;&amp; (
+              &lt;span style={{ color: &quot;red&quot; }}&gt;{errors.municipality}&lt;/span&gt;
+            )}
+          &lt;/Form.Item&gt;
+        &lt;/div&gt;
+
+        &lt;div
+          class=&quot;step3&quot;
+          style={{ display: &quot;flex&quot;, marginLeft: &quot;50px&quot;, marginTop: &quot;50px&quot; }}
+        &gt;
+          &lt;HealthDetails onChange={HandleChange} errors={errors}/&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;Button type=&quot;primary&quot; htmlType=&quot;submit&quot; className=&quot;login-form-button&quot; style={{ width: &quot;120px&quot; }}&gt;
+        Valider
+      &lt;/Button&gt;
+    &lt;/Form&gt;
+    ): 
+
+    &lt;Alert
+      message=&quot;Success Tips&quot;
+      description={message}
+      type=&quot;success&quot;
+      showIcon
+    /&gt;}
+    &lt;/&gt;
+  );
+}
+
+export default AppQuestionnaire_Etape3;
+</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

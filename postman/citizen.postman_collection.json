@@ -1,0 +1,451 @@
+{
+	"info": {
+		"_postman_id": "c01198d9-2d21-4901-befa-d1efd6eb3685",
+		"name": "citizen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add citizen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cin",
+							"value": "12619820",
+							"type": "text"
+						},
+						{
+							"key": "date_of_birth",
+							"value": "28/10/1991",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "12614820",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "youssef@live.fr",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "youssef",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "mansouri",
+							"type": "text"
+						},
+						{
+							"key": "sexe",
+							"value": "m",
+							"type": "text"
+						},
+						{
+							"key": "father_lastname",
+							"value": "mohamed",
+							"type": "text"
+						},
+						{
+							"key": "grandfather_lastname",
+							"value": "youssef",
+							"type": "text"
+						},
+						{
+							"key": "mother_firstname",
+							"value": "mansouri",
+							"type": "text"
+						},
+						{
+							"key": "mother_lastname",
+							"value": "farida",
+							"type": "text"
+						},
+						{
+							"key": "governorate",
+							"value": "kasserine",
+							"type": "text"
+						},
+						{
+							"key": "municipality",
+							"value": "fousana",
+							"type": "text"
+						},
+						{
+							"key": "delegation",
+							"value": "dachra",
+							"type": "text"
+						},
+						{
+							"key": "positif_pcr",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "allergy",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "anticaogulant",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "hemostasis",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "pregnant",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/citizen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"citizen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update citizen",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY1MzdhYjljN2QxNmY2MWU4YmY2NCIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NjA0MzMwLCJleHAiOjE2Mzk2MDc5MzB9.yPxxFly4XqcesplZ0-iHnLmEnaWU7-nCa64oulI4ECw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cin",
+							"value": "12614820",
+							"type": "text"
+						},
+						{
+							"key": "date_of_birth",
+							"value": "28/10/1991",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "12614820",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "youssef@live.fr",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "youssef",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "mansouri",
+							"type": "text"
+						},
+						{
+							"key": "sexe",
+							"value": "m",
+							"type": "text"
+						},
+						{
+							"key": "father_lastname",
+							"value": "mohamed",
+							"type": "text"
+						},
+						{
+							"key": "grandfather_lastname",
+							"value": "youssef",
+							"type": "text"
+						},
+						{
+							"key": "mother_firstname",
+							"value": "mansouri",
+							"type": "text"
+						},
+						{
+							"key": "mother_lastname",
+							"value": "farida",
+							"type": "text"
+						},
+						{
+							"key": "governorate",
+							"value": "kasserine",
+							"type": "text"
+						},
+						{
+							"key": "municipality",
+							"value": "fousana",
+							"type": "text"
+						},
+						{
+							"key": "delegation",
+							"value": "dachra le3reyna",
+							"type": "text"
+						},
+						{
+							"key": "positif_pcr",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "allergy",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "anticaogulant",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "hemostasis",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "pregnant",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/citizen/61ba5fc4716982153a558b4c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"citizen",
+						"61ba5fc4716982153a558b4c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all citizen",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZTMxYWE0NWNhMzUzMTMxNjQ1ZCIsImZ1bGxuYW1lIjoieW91c3NlYiAgZmxlbiIsImVtYWlsIjoieW91c3NlZndAbGl2ZS5mciIsImlhdCI6MTYzOTc0Mzk4NSwiZXhwIjoxNjM5NzQ3NTg1fQ.PyJ1RcFRwJLCh5lbAkz05yrfO1MAF2WLI54UvyXKols",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/citizen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"citizen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find single citizen",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZTMxYWE0NWNhMzUzMTMxNjQ1ZCIsImZ1bGxuYW1lIjoieW91c3NlYiAgZmxlbiIsImVtYWlsIjoieW91c3NlZndAbGl2ZS5mciIsImlhdCI6MTYzOTc0Mzk4NSwiZXhwIjoxNjM5NzQ3NTg1fQ.PyJ1RcFRwJLCh5lbAkz05yrfO1MAF2WLI54UvyXKols",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/citizen/61bc81237324bd46fa317cf9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"citizen",
+						"61bc81237324bd46fa317cf9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete citizen",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY1MzdhYjljN2QxNmY2MWU4YmY2NCIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NjA0MzMwLCJleHAiOjE2Mzk2MDc5MzB9.yPxxFly4XqcesplZ0-iHnLmEnaWU7-nCa64oulI4ECw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/citizen/61ba6154716982153a558b55",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"citizen",
+						"61ba6154716982153a558b55"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm account citizen",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQ2MTIwLCJleHAiOjE2Mzk3NDk3MjB9.LfKCSKLguUC3267fG8HFpEYHHaVvcLBH4A2jHdXgC3Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/citizen/confirm/61bc81237324bd46fa317cf9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"citizen",
+						"confirm",
+						"61bc81237324bd46fa317cf9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm vaccinate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQ2MTIwLCJleHAiOjE2Mzk3NDk3MjB9.LfKCSKLguUC3267fG8HFpEYHHaVvcLBH4A2jHdXgC3Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/citizen/vaccinated/12619820T2ADQ307888",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"citizen",
+						"vaccinated",
+						"12619820T2ADQ307888"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "connect citizen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "12619820T2ADQ307888",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/citizen/connect",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"citizen",
+						"connect"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - src/services/tasks.service.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://github.com/the-simian/es6-plato">ES6 Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+      <li class="active">
+        <a href="display.html">Summary Display</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>src/services/tasks.service.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">62.25</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">86</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">22.56</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.77</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">let tasks = [  {id: 1,title:&#039;Ariana&#039;}, {id:2,title:&#039;Béja&#039;},{id: 3,title: &#039;Ben Arous&#039;},{id: 4,title: &#039;Bizerte&#039;},{id: 5,title: &#039;Gabès&#039;}, {id: 6,title:&#039;Gafsa&#039;},
+{ id: 7,title:&#039;Jendouba&#039;}, {id: 8,title:&#039;Kairouan&#039;},{id: 9,title: &#039;Kasserine&#039;},{id: 10,title: &#039;Kébili&#039;}, {id: 11,title:&#039;Kef&#039;}, {id: 12,title:&#039;Mahdia&#039;},{ id: 13,title:&#039;Manouba&#039;}, {id: 14,title:&#039;Médenine&#039;}, {id: 15,title:&#039;Monastir&#039;},{id: 16,title: &#039;Nabeul&#039;}, {id: 17,title:&#039;Sfax&#039;}, {id: 18,title:&#039;Sidi Bouzid&#039;},{id: 19,title: &#039;Siliana&#039;}, {id: 20,title:&#039;Sousse&#039;},{id: 21,title: &#039;Tataouine&#039;}, 
+{id: 22,title:&#039;Tozeur&#039;}, {id: 23,title:&#039;Tunis&#039;}, {id: 24,title:&#039;Zaghouan&#039;}];
+let Delegation = [  {id: 1,title:&#039;Ariana Ville&#039;}, {id:2,title:&#039;La Soukra&#039;},]
+// function delay(ms) {
+//   return new Promise((resolve) =&gt; setTimeout(resolve, ms))
+// }
+
+export const fetchTasks = () =&gt; {
+  // await delay(1000)
+  return tasks
+}
+export const fetchTasksByFilter = (searchValue) =&gt; {
+  // await delay(1000)
+  return tasks.filter((task) =&gt; task.title.includes(searchValue))
+}
+
+export const fetchTaskById = (id) =&gt; {
+  // await delay(1000)
+  const task = tasks.find((task) =&gt; task.id === id)
+  if (task==&quot;Ariana&quot;)
+  return Delegation
+}
+
+export const addTask = (task) =&gt; {
+  // await delay(1000)
+  const newTask = {
+    id: tasks.length + 1,
+    title: task.title,
+    duration: +task.duration,
+  }
+
+  tasks = tasks.concat(newTask)
+  return newTask
+}
+
+export const deleteTask = (id) =&gt; {
+  // await delay(1000)
+  tasks = tasks.filter((task) =&gt; task.id !== id)
+}
+
+export const updateTask = (id, task) =&gt; {
+  // await delay(1000)
+  const updatedTask = { id, title: task.title, duration: task.duration }
+  tasks = tasks.map((task) =&gt; (task.id === id ? updatedTask : task))
+  return updatedTask
+}
+
+// export const addTask = async (task) =&gt; {
+//   const result = await Axios.post(
+//     &quot;https://heroku-boot-todoapp-seif.herokuapp.com/tasks/&quot;,
+//     task
+//   )
+//   return result.data
+// }
+
+// export const updateTask = async (id, task) =&gt; {
+//   const result = await Axios.put(
+//     &quot;https://heroku-boot-todoapp-seif.herokuapp.com/tasks/&quot; + id,
+//     task
+//   )
+//   return result.data
+// }
+
+// export const deleteTask = async (id) =&gt; {
+//   const result = await Axios.delete(
+//     &quot;https://heroku-boot-todoapp-seif.herokuapp.com/tasks/&quot; + id
+//   )
+//   return result.data
+// }
+
+// export const fetchTaskById = async (taskId) =&gt; {
+//   const result = await Axios.get(
+//     &quot;https://heroku-boot-todoapp-seif.herokuapp.com/tasks/&quot; + taskId
+//   )
+//   return result.data
+// }
+
+// export const fetchTasks = async () =&gt; {
+//   // await delay(500)
+//   const result = await Axios.get(
+//     &quot;https://heroku-boot-todoapp-seif.herokuapp.com/tasks/&quot;
+//   )
+//   return result.data._embedded.tasks
+// }
+</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

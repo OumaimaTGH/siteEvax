@@ -1,0 +1,138 @@
+.container-02 {
+    background-color: lightgray;
+    height: 600px;
+}
+
+.nav {
+    background-color: white;
+}
+
+.logo1 {
+    margin-left: 30px;
+    margin-top: -40px;
+}
+
+.numero {
+    height: 40px;
+    width: 220px;
+    max-width: 240px;
+    margin-left: 70px;
+    margin-top: 20px;
+}
+
+.btn-reclamation {
+    border-radius: 20px;
+    width: 140px;
+    height: 40px;
+    border-color: red;
+    background-color: transparent;
+    margin-left: 500px;
+    margin-top: 15px;
+}
+
+.sous-btn {
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+}
+
+.text-area {
+    border-radius: 20px;
+    width: 450px;
+    height: 600px;
+}
+
+.text-area:hover {
+    border-color: red;
+}
+
+.btn-annuler {
+    border-radius: 20px;
+    height: 30px;
+    width: 100px;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 250px;
+}
+
+.btn-connection {
+    border-radius: 20px;
+    height: 30px;
+    width: 100px;
+    font-size: 15px;
+    background-color: red;
+}
+
+.btn-connection:hover {
+    background-color: red;
+    text-decoration-color: white;
+}
+
+.select {
+    width: 450px;
+    border-radius: 20px;
+}
+
+.btn-lg {
+    border-radius: 20px;
+    width: 140px;
+    height: 40px;
+    border-color: red;
+    background-color: transparent;
+    margin-left: 1170px;
+    margin-top: -52px;
+}
+
+.card01 {
+    width: 1300px;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-left: 25px;
+    margin-right: 50px;
+}
+
+.btn01 {
+    border-radius: 20px;
+    margin-left: 40px;
+}
+
+.btn02 {
+    border-radius: 20px;
+    max-width: 150px;
+    margin-left: 160px;
+}
+
+.btn03 {
+    margin-left: 100px;
+    border-radius: 20px;
+}
+
+.row2 {
+    margin-top: 20px;
+}
+
+.text00,
+.text01,
+.text02,
+.text03 {
+    font-size: 15px;
+    font-weight: 'bold';
+}
+
+.card02 {
+    margin-top: 20px;
+    border-radius: 20px;
+    margin-left: 25px;
+    margin-right: 50px;
+    width: 1300px;
+}
+
+.btn-rdv {
+    border-radius: 20px;
+    margin-left: -270px;
+}
+
+.btn-effets {
+    border-radius: 20px;
+    margin-left: 70px;
+}

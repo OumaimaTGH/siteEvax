@@ -1,0 +1,19 @@
+.contactBlock {
+    margin-top: 30px;
+    margin-left: 13%;
+
+}
+
+.container-Fluid {
+    padding-top: 70% 30%;
+}
+
+#components-form-demo-control-hooks .ant-btn {
+    margin-right: 8px;
+}
+
+.redimensionnable {
+    resize: both;
+    overflow: scroll;
+    border: 1px solid black;
+}

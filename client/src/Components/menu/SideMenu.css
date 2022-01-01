@@ -1,0 +1,26 @@
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
+    color: rgba(255, 255, 255, 0.65);
+    background: #83091c;
+}
+
+.ant-layout-sider-trigger {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    height: 48px;
+    color: #fff;
+    line-height: 48px;
+    text-align: center;
+    background: #83091c;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.ant-layout-sider {
+    position: relative;
+    min-width: 0;
+    background: #83091c;
+    transition: all 0.2s;
+}
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #560f1299;
+}

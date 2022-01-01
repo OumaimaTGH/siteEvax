@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - src/Components/banner/banner.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://github.com/the-simian/es6-plato">ES6 Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+      <li class="active">
+        <a href="display.html">Summary Display</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>src/Components/banner/banner.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">54.30</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">185</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">19.14</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.20</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import React, { useEffect,useState } from &#039;react&#039;;
+import { useDispatch, useSelector } from &#039;react-redux&#039;;
+
+import { Card, Col, Row, Carousel, Image, Button } from &#039;antd&#039;;
+import &#039;antd/dist/antd.css&#039;;
+import &#039;./banner.css&#039;;
+import {UserOutlined,MedicineBoxOutlined,GlobalOutlined, 
+    CarryOutOutlined,FileAddOutlined,UserAddOutlined} from &#039;@ant-design/icons&#039;;
+
+import img1 from &quot;../../Assets/syringe.png&quot;;
+import img2 from &quot;../../Assets/images/box-img1.jpg&quot;;
+import img3 from &quot;../../Assets/images/box-img2.jpg&quot;;
+import img4 from &quot;../../Assets/images/box-img3.jpg&quot;;
+//background
+import i1 from &quot;../../Assets/images/bg-img2.png&quot;;
+import i2 from &quot;../../Assets/images/bg-img3.png&quot;;
+import i3 from &quot;../../Assets/images/bg-img1.png&quot;;
+
+
+        export const image_name = img1;
+        export const image_name2 = img2;
+        export const image_name3 = img3;
+        export const image_name4 = img4;
+        //background
+        export const image_name5 = i1;
+        export const image_name6 = i2;
+        export const image_name7 = i3;
+
+//-------image carousel--------
+        const contentStyle = {
+            height: &#039;250px&#039;,
+            width:&#039;250px&#039;,
+            color: &#039;#fff&#039;,
+            lineHeight: &#039;160px&#039;,
+            textAlign: &#039;center&#039;,
+            background: &#039;#364d79&#039;
+          };
+
+         
+
+function banner (props) {
+    
+
+
+function timeout(dateTime) {
+
+    var today = new Date();
+    var date = today.getFullYear()+&#039;-&#039;+(today.getMonth()+1)+&#039;-&#039;+today.getDate();
+    var time = today.getHours() + &quot;:&quot; + today.getMinutes() + &quot;:&quot; + today.getSeconds();
+    dateTime = date+&#039; &#039;+time;
+    return dateTime ;         
+}
+
+window.onload = function() {
+    document.getElementById(&quot;dateTime&quot;).innerHTML = timeout();            
+}
+
+//------ background images------------
+
+function changeImage() {
+var img = document.getElementById(&quot;img&quot;);
+img.src = images[x];
+x++;        
+if(x &gt;= images.length) {
+x = 0;
+} 
+//fadeImg(img, 100, true);
+setTimeout(function(){changeImage();}, 5000);
+}
+var images = [], x = 0;
+images[0] = i2;
+images[1] = i3;
+images[2] = i1;
+setTimeout(function(){changeImage();}, 5000);
+        
+        return (
+    &lt;div className=&quot;container1&quot;&gt;
+        &lt;img id=&quot;img&quot; alt=&quot;&quot; src={i1} style={{height:&#039;650px&#039;, width:&#039;100%&#039;}}/&gt;
+    &lt;Row style={{height: 590, width:&#039;100%&#039;}} gutter={[16,16]}&gt;
+    &lt;div &gt;
+        &lt;Card  style={{ width: 250,height: 250,marginTop: &quot;80px&quot;,marginLeft: &quot;150px&quot;}} className=&quot;card1&quot;&gt;
+
+                        &lt;Carousel autoplay&gt;
+                    &lt;div&gt;
+                    &lt;h3 style={contentStyle}&gt;
+                        &lt;Image width={250} alt=&quot;&quot; src={img2}/&gt;&lt;/h3&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                    &lt;h3 style={contentStyle}&gt;
+                    &lt;Image width={250} src={img3}/&gt;
+                    &lt;/h3&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                    &lt;h3 style={contentStyle}&gt;
+                    &lt;Image width={250} src={img4}/&gt;
+                    &lt;/h3&gt;
+                    &lt;/div&gt;
+                &lt;/Carousel&gt;
+        &lt;/Card&gt;
+    &lt;/div&gt;
+
+    &lt;div &gt;
+        &lt;Card  style={{ width: 200,height: 250,marginTop: &quot;80px&quot;, backgroundColor:&#039;rgb(232,232,232,0.5)&#039;}}&gt;
+        &lt;p style={{color:&#039;white&#039;, fontSize:25, fontWeight:&#039;bold&#039;,marginTop:&quot;-10px&quot;, marginLeft:&#039;25px&#039;}}classname=&quot;text&quot;&gt;Nombre d&#039;inscrits&lt;/p&gt;
+        &lt;p className=&quot;text&quot; style={{fontSize:25, fontWeight:&#039;bold&#039;}}&gt;{props.citizen}&lt;/p&gt;
+        &lt;p class=&quot;text&quot; id=&quot;dateTime&quot;&gt;&lt;/p&gt;
+        
+        &lt;/Card&gt;
+    &lt;/div&gt;
+
+    
+        &lt;Card  style={{ width: 600,height: 250,marginTop: &quot;50px&quot;,marginLeft:&quot;80px&quot;, backgroundColor:&#039;transparent&#039;, border:&#039;none&#039;}}&gt;
+        &lt;p style={{color:&#039;white&#039;, fontSize:45, fontWeight:&#039;bold&#039;, textAlign:&#039;left&#039;,lineHeight:&#039;45px&#039;, marginTop:&quot;60px&quot;}}&gt;BIENVENUE AU PORTAIL DE VACCINATION CONTRE LA COVID 19&lt;/p&gt;
+        &lt;p className=&quot;text&quot; style={{textAlign:&#039;left&#039;, marginTop:&#039;-30px&#039;, marginLeft:&#039;5px&#039;}}&gt;Ensemble contre la COVID-19&lt;/p&gt;
+        &lt;/Card&gt;
+   
+
+
+    &lt;/Row&gt;
+
+    &lt;Row style={{marginTop:-260}}&gt;
+    &lt;div &gt;
+        &lt;Card  style={{ width: 450,height: 250,marginLeft: &quot;142px&quot;,marginBottom:&quot;58px&quot;, backgroundColor:&#039;rgb(232,232,232,0.5)&#039;}}&gt;
+        &lt;Row &gt;
+        &lt;div className=&quot;item2&quot;&gt;
+                    &lt;Col className=&quot;img-container&quot; span={4}&gt;
+                    &lt;img src={img1} style={{height:30, width:30, marginLeft:&#039;20px&#039;, marginTop:&#039;-5px&#039;, marginBottom: &#039;3.5em&#039;}} /&gt;
+                        &lt;p style={{marginTop: &quot;-50px&quot;}} className=&quot;text&quot;&gt;Deuxième dose&lt;/p&gt;
+                    &lt;/Col&gt;
+         &lt;/div&gt;
+
+         &lt;div className=&quot;item2 item&quot;&gt;
+             
+                    &lt;Col className=&quot;img-container&quot; span={4}&gt;
+                    &lt;UserOutlined type=&quot;message&quot; theme=&quot;outlined&quot; className=&quot;icon&quot;/&gt;
+                        &lt;p style={{marginTop: &quot;-13px&quot;}} className=&quot;text&quot;&gt;Vaccination enfants&lt;/p&gt;
+                    &lt;/Col&gt;
+         &lt;/div&gt;
+
+         &lt;div className=&quot;item2 item03&quot;&gt;
+             
+                    &lt;Col className=&quot;img-container&quot; span={4}&gt;
+                    &lt;MedicineBoxOutlined type=&quot;message&quot; theme=&quot;outlined&quot; className=&quot;icon&quot;/&gt;
+                        &lt;p style={{marginTop: &quot;-13px&quot;}} className=&quot;text&quot;&gt;Effets secondaires&lt;/p&gt;
+                    &lt;/Col&gt;
+         &lt;/div&gt;
+         &lt;/Row&gt;
+
+         &lt;div className=&quot;item2 item04&quot;&gt;
+             
+                    &lt;Col className=&quot;img-container&quot; span={4}&gt;
+                    &lt;GlobalOutlined type=&quot;message&quot; theme=&quot;outlined&quot; className=&quot;icon&quot;/&gt;
+                        &lt;p style={{marginTop: &quot;-13px&quot;}} className=&quot;text&quot;&gt;Evax mobilité&lt;/p&gt;
+                    &lt;/Col&gt;
+         &lt;/div&gt;
+        &lt;/Card&gt;
+    &lt;/div&gt;
+
+
+    &lt;Button  type=&quot;danger&quot; shape=&quot;round&quot; style={{marginLeft:&#039;80px&#039;, width:550, height:50}} icon={&lt;CarryOutOutlined className=&quot;icon1&quot;/&gt;} block&gt;
+          
+          &lt;p className=&quot;text1&quot; style={{fontSize: 15,marginTop: &#039;5px&#039;,marginLeft: &#039;10px&#039;}}&gt;INSCRIVEZ-VOUS A LA CAMPAGNE DE LA VACCINATION&lt;/p&gt;
+    &lt;/Button&gt;
+
+    &lt;Button shape=&quot;round&quot; style={{marginLeft:&#039;674px&#039;, width:550, height:50, backgroundColor:&#039;orange&#039;, float:&#039;right&#039;, marginTop:&#039;-245px&#039;}} icon={&lt;FileAddOutlined  className=&quot;icon1&quot;/&gt;} block&gt;
+          
+          &lt;p className=&quot;text1&quot; style={{fontSize: 15,marginTop: &#039;6px&#039;,marginLeft: &#039;15px&#039;}}&gt;VACCINATION CHEZ LA PHARMACIE&lt;/p&gt;
+    &lt;/Button&gt;
+
+    &lt;Button shape=&quot;round&quot; style={{marginLeft:&#039;674px&#039;, width:550, height:50, backgroundColor:&#039;blue&#039;, float:&#039;right&#039;, marginTop:&#039;-190px&#039;}} icon={&lt;UserAddOutlined className=&quot;icon1&quot;/&gt;} block&gt;
+          
+          &lt;p className=&quot;text1&quot; style={{fontSize: 15,marginTop: &#039;-25px&#039;,marginLeft: &#039;40px&#039;}}&gt;LISTE DES CABINETS MEDICAUX ET LABORATOIRES DE VACCINATION&lt;/p&gt;
+    &lt;/Button&gt;
+
+    &lt;/Row&gt;
+
+    
+  
+  
+    &lt;/div&gt;
+        )
+    
+}
+
+export default banner;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

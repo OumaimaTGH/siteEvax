@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "333342d7-4ebf-4ba0-ab79-b7d28b56d92b",
+		"name": "center",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add center",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQyOTYwLCJleHAiOjE2Mzk3NDY1NjB9.G1ev4blCx-iBGXlk5l-GLGs2Llu-qaQuDLR29JsB-48",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "center monastir",
+							"type": "text"
+						},
+						{
+							"key": "governorate",
+							"value": "monastir",
+							"type": "text"
+						},
+						{
+							"key": "municipality",
+							"value": "monastir",
+							"type": "text"
+						},
+						{
+							"key": "delegation",
+							"value": "sidi nasr",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "el omran",
+							"type": "text"
+						},
+						{
+							"key": "postal_code",
+							"value": "5000",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "200",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/center",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"center"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find one center",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY1MzdhYjljN2QxNmY2MWU4YmY2NCIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NDk5OTYwLCJleHAiOjE2Mzk1MDM1NjB9.8z5ksP8P8zD527m9TKCe6pMPkouiMdHmN61uCHaIbDw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/center/61b8cac18c830f3cdb42bd95",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"center",
+						"61b8cac18c830f3cdb42bd95"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update center",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQ0NzQxLCJleHAiOjE2Mzk3NDgzNDF9.6obd3fzuSbWnmGtajvFVa5HL-EJhxQ9Yo-JgmsXPNzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "center",
+							"type": "text"
+						},
+						{
+							"key": "governorate",
+							"value": "sousse",
+							"type": "text"
+						},
+						{
+							"key": "municipality",
+							"value": "sidi lhani",
+							"type": "text"
+						},
+						{
+							"key": "delegation",
+							"value": "el kac",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "soula",
+							"type": "text"
+						},
+						{
+							"key": "postal_code",
+							"value": "4500",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "700",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/center/61bc877867d49e83ddad69bd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"center",
+						"61bc877867d49e83ddad69bd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all center",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQ0NzQxLCJleHAiOjE2Mzk3NDgzNDF9.6obd3fzuSbWnmGtajvFVa5HL-EJhxQ9Yo-JgmsXPNzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/center",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"center"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete center",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY1MzdhYjljN2QxNmY2MWU4YmY2NCIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NDIxMzUyLCJleHAiOjE2Mzk0MjQ5NTJ9.uBX7Q-5pVn5XWmIrJ-PrmnVOC3m-USjaijElYWUF2QM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/center/61b7971a009fde73462b2daf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"center",
+						"61b7971a009fde73462b2daf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

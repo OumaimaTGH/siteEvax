@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - src/Components/Home/Question.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://github.com/the-simian/es6-plato">ES6 Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+      <li class="active">
+        <a href="display.html">Summary Display</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>src/Components/Home/Question.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">46.48</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">127</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">14.09</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.61</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import React, { Component } from &#039;react&#039;
+import &#039;./Question.css&#039;
+import &#039;antd/dist/antd.css&#039;;
+import { Row, Col, Card } from &#039;antd&#039;;
+import { BarChartOutlined, QuestionCircleOutlined, DatabaseOutlined,ExclamationCircleOutlined,
+        EnvironmentOutlined  } from &#039;@ant-design/icons&#039;;
+
+
+import img1 from &quot;../../Assets/syringe.png&quot;;
+export const image_name = img1;
+
+function Question () {
+    
+        return (
+            &lt;div className=&quot;bigdiv&quot;&gt;
+                &lt;div&gt;&lt;p type=&quot;message&quot; style={{fontSize:&#039;40px&#039;, fontWeight:&#039;bold&#039;, color:&#039;#e92130c4&#039;, textAlign:&#039;center&#039;}}&gt;Questions fréquentes sur EVAX&lt;/p&gt;&lt;/div&gt;
+               &lt;div className=&quot;site-card-wrapper &quot;&gt;
+                &lt;Row gutter={16, 16}&gt;
+                &lt;div className=&quot;box item&quot;&gt;
+                &lt;Col className=&quot;img-container&quot; span={8}&gt;
+                    &lt;Card image=&quot;Card image &quot; bordered={false} style={{ width: 300, height: 200 }}&gt;
+                    &lt;BarChartOutlined type=&quot;message&quot; style={{ fontSize: &#039;50px&#039;, color: &#039;#e92130&#039;}} theme=&quot;outlined&quot; className=&quot;img-center item-img&quot;/&gt;
+                    &lt;p type=&quot;message&quot; style={{ fontSize: &#039;15px&#039;, fontWeight:&#039;bold&#039;, color: &#039;grey&#039;, width:&#039;300px&#039;,marginLeft:&#039;-20px&#039;, textAlign:&#039;center&#039; }} theme=&quot;outlined&quot;&gt;Quels sont les grands principes de la stratégie de vaccination contre la COVID-19 ?&lt;/p&gt;
+                    &lt;div&gt;
+                    &lt;ul&gt;
+                                        &lt;p type=&quot;message&quot; style={{ fontSize: &#039;15px&#039;, width:&#039;300px&#039;, textAlign:&#039;left&#039;, marginLeft:&#039;-40px&#039; }} theme=&quot;outlined&quot;&gt;La Tunisie s’est fixé les principes suivants:&lt;/p&gt;
+                                        &lt;li&gt;
+                                        un accès équitable pour des vaccins gratuits, efficaces, sûrs et de qualité approuvés par les données scientifiques en temps opportun
+                                        &lt;/li&gt;
+                                        &lt;li&gt;une prise de décision personnelle basée sur des données transparentes et compréhensibles&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;/Card&gt;
+                &lt;/Col&gt;
+                &lt;/div&gt;
+
+                &lt;div className=&quot;box item&quot;&gt;
+                &lt;Col span={8} className=&quot;img-container&quot;&gt;
+                    &lt;Card image=&quot;Card image &quot; bordered={false} style={{ width: 300 }}&gt;
+                    &lt;QuestionCircleOutlined type=&quot;message&quot; style={{ fontSize: &#039;50px&#039;, color: &#039;#e92130&#039; }} theme=&quot;outlined&quot; className=&quot;img-center item-img&quot; /&gt;
+                    &lt;p type=&quot;message&quot; style={{ fontSize: &#039;15px&#039;, fontWeight:&#039;bold&#039;, color: &#039;grey&#039;, width:&#039;300px&#039;,marginLeft:&#039;-20px&#039;, textAlign:&#039;center&#039;}}&gt;
+                    Comment s’enregistrer pour la vaccination Covid-19 ?&lt;/p&gt;
+                    &lt;div style={{marginTop:&#039;5rem&#039;}}&gt;
+                                    &lt;p type =&quot;message&quot; style={{textAlign:&#039;center&#039;}}&gt;Website : www.evax.tn&lt;/p&gt;
+                                    &lt;p type =&quot;message&quot; style={{textAlign:&#039;center&#039;}}&gt;SMS : 85355&lt;/p&gt;
+                                    &lt;p type =&quot;message&quot; style={{textAlign:&#039;center&#039;}}&gt;USSD : *2021#&lt;/p&gt;
+                                    
+                    &lt;/div&gt;
+                    
+                    &lt;/Card&gt;
+                &lt;/Col&gt;
+                &lt;/div&gt;
+                &lt;div className=&quot;box item&quot;&gt;
+                &lt;Col span={8} className=&quot;img-container&quot;&gt;
+                    &lt;Card image=&quot;Card image&quot; bordered={false} style={{ width: 300 }}&gt;
+                    &lt;img src={img1} style={{height:60, width:60, marginLeft:&#039;90px&#039;, marginTop:&#039;-5px&#039;, marginBottom: &#039;3.5em&#039;}} /&gt;
+                    {/*&lt;EditOutlined type=&quot;message&quot; style={{ fontSize: &#039;50px&#039;, color: &#039;#e92130&#039; }} theme=&quot;outlined&quot; className=&quot;img-center item-img&quot; /&gt;*/}
+                    &lt;p type=&quot;message&quot; style={{ fontSize: &#039;15px&#039;, fontWeight:&#039;bold&#039;, color: &#039;grey&#039;, width:&#039;300px&#039;,marginLeft:&#039;-20px&#039;, textAlign:&#039;center&#039;}}&gt;
+                    Quels sont les objectifs de la vaccination ?&lt;/p&gt;
+                        &lt;div style={{marginTop:&#039;3rem&#039;}}&gt;
+                        Le premier objectif de la vaccination, c’est de faire baisser le nombre des formes graves de COVID-19. Les résultats des études cliniques des candidats vaccins semblent converger pour démontrer un fait principal : la vaccination permet de réduire massivement la mortalité due au virus et à ses formes graves.
+                        &lt;/div&gt;
+                   
+                    
+                    &lt;/Card&gt;
+                &lt;/Col&gt;
+                &lt;/div&gt;
+
+
+                &lt;div className=&quot;box item&quot;&gt;
+                &lt;Col className=&quot;img-container&quot; span={8}&gt;
+                    &lt;Card image=&quot;Card image &quot; bordered={false} style={{ width: 300 }}&gt;
+                    &lt;DatabaseOutlined type=&quot;message&quot; style={{ fontSize: &#039;50px&#039;, color: &#039;#e92130&#039; }} theme=&quot;outlined&quot; className=&quot;img-center item-img&quot;/&gt;
+                    &lt;p type=&quot;message&quot; style={{ fontSize: &#039;15px&#039;, fontWeight:&#039;bold&#039;, color: &#039;grey&#039;, width:&#039;300px&#039;,marginLeft:&#039;-20px&#039;, textAlign:&#039;center&#039;}}&gt;La vaccination contre la Covid-19 sera-t-elle gratuite ?&lt;/p&gt;
+                                 &lt;div style={{marginTop:&#039;3rem&#039;}}&gt;
+                                 Oui. La vaccination sera gratuite pour tous en Tunisie, mais selon la priorité établie par l es autorités.
+                                      
+                    &lt;/div&gt;
+                    
+                    &lt;/Card&gt;
+                &lt;/Col&gt;
+                &lt;/div&gt;
+
+
+
+                &lt;div className=&quot;box item&quot;&gt;
+                    &lt;Col span={8} className=&quot;img-container&quot;&gt;
+                        &lt;Card image=&quot;Card image &quot; bordered={false} style={{ width: 300 }}&gt;
+                        &lt;EnvironmentOutlined type=&quot;message&quot; style={{ fontSize: &#039;50px&#039;, color: &#039;#e92130&#039; }} theme=&quot;outlined&quot; className=&quot;img-center item-img&quot; /&gt;
+                        &lt;p type=&quot;message&quot; style={{ fontSize: &#039;15px&#039;, fontWeight:&#039;bold&#039;, color: &#039;grey&#039;, width:&#039;300px&#039;,marginLeft:&#039;-20px&#039;, textAlign:&#039;center&#039;}}&gt;
+                        Où se faire vacciner ?&lt;/p&gt;
+                        &lt;div style={{marginTop:&#039;3rem&#039;}}&gt;
+                            &lt;p className=&quot;text-deco&quot;&gt;
+                            Il y aura environ 200 centres de vaccination à raison de :
+                            1 à 2 grand (s) centre(s) par gouvernorat ouvert toute la semaine
+                            Et un centre par délégation à identifier par direction régionale de la santé ouvert le weekend
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;/Card&gt;
+                    &lt;/Col&gt;
+                &lt;/div&gt;
+                &lt;div className=&quot;box item&quot;&gt;
+                &lt;Col span={8} className=&quot;img-container&quot;&gt;
+                    &lt;Card image=&quot;Card image&quot; bordered={false} style={{ width: 300 }}&gt;
+                    &lt;ExclamationCircleOutlined type=&quot;message&quot; style={{ fontSize: &#039;50px&#039;, color: &#039;#e92130&#039; }} theme=&quot;outlined&quot; className=&quot;img-center item-img&quot; /&gt;
+                    &lt;p type=&quot;message&quot; style={{ fontSize: &#039;15px&#039;, fontWeight:&#039;bold&#039;, color: &#039;grey&#039;, width:&#039;300px&#039;,marginLeft:&#039;-20px&#039;, textAlign:&#039;center&#039;}}&gt;
+                    Que faire en cas de problème lors de l&#039;inscription?&lt;/p&gt;
+                        &lt;div style={{marginTop:&#039;2rem&#039;}}&gt;
+                        Un numéro vert gratuit a été mis en place pour accompagner les citoyens tout au long de la campagne de vaccination. Le numéro vert : 80102021, ouvert du lundi au vendredi de 09h à 17h
+                        &lt;/div&gt;
+                    
+                    &lt;/Card&gt;
+                &lt;/Col&gt;
+                &lt;/div&gt;
+                &lt;/Row&gt;
+            &lt;/div&gt;,
+            
+        &lt;/div&gt;
+
+
+        )
+    
+}
+export default Question ;
+</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

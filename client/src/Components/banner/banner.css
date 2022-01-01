@@ -1,0 +1,90 @@
+.container1 {
+    background-color: gray;
+}
+
+#img {
+    position: absolute;
+    margin-left: 0px;
+}
+
+.item2 {
+    position: relative;
+    width: 110px;
+    height: 90px;
+    padding: 1em;
+    margin: auto;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px;
+    animation: up .8s ease-in forwards;
+    transition: transform .5s ease-in;
+    font-family: 'Segoe UI';
+    font-weight: 400;
+    text-align: justify;
+    background-color: darkorange;
+}
+
+.item2:hover {
+    background-color: darkgoldenrod;
+}
+
+.item2.item {
+    margin-left: 10px;
+    background-color: blue;
+}
+
+.item2.item:hover {
+    background-color: darkblue;
+}
+
+.icon {
+    font-size: 30px;
+    margin-left: 25px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.item2.item03 {
+    background-color: green;
+}
+
+.item2.item03:hover {
+    background-color: darkolivegreen;
+}
+
+.item2.item04 {
+    background-color: red;
+    margin-left: 145px;
+}
+
+.item2.item04:hover {
+    background-color: darkred;
+}
+
+.text {
+    color: white;
+    font-size: 15px;
+    margin-left: 0px;
+    text-align: center;
+}
+
+#dateTime {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card1 .ant-card-body {
+    padding: 0;
+}
+
+.text1 {
+    float: left;
+    color: white;
+}
+
+.icon1 {
+    float: left;
+    font-size: 30px;
+    color: white;
+}

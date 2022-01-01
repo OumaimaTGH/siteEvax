@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "10d5c9ca-48c2-41d1-96e3-30f2f9b8a2ed",
+		"name": "operator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add operator",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQyOTYwLCJleHAiOjE2Mzk3NDY1NjB9.G1ev4blCx-iBGXlk5l-GLGs2Llu-qaQuDLR29JsB-48",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fullname",
+							"value": "yousseb  flen",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "youssefw@live.fr",
+							"type": "text"
+						},
+						{
+							"key": "confirm",
+							"value": "azerty",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/operator",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"operator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all operator",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQ5MzI3LCJleHAiOjE2Mzk3NTI5Mjd9.jW-Dg1icFSXdfCJhljlqnBV3WaoaCs5rFC9xlWPD99g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/operator",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"operator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete operator",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY1NGMxYjljN2QxNmY2MWU4YmY4MSIsImZ1bGxuYW1lIjoieW91c3NlYiBiZW4gZmxlbiIsImVtYWlsIjoieW91c3NlZkJAbGl2ZS5mciIsImlhdCI6MTYzOTMzOTIxNiwiZXhwIjoxNjM5MzQyODE2fQ.a1Ku7eWbDYFC5tJGh-tbVRrKxlXRb9I5pRLpYIR1OY4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/operator/61b641819689e3e12d3dd874",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"operator",
+						"61b641819689e3e12d3dd874"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update operator",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQyOTYwLCJleHAiOjE2Mzk3NDY1NjB9.G1ev4blCx-iBGXlk5l-GLGs2Llu-qaQuDLR29JsB-48",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fullname",
+							"value": "youssef ben mohamed",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "youssef@live.fr",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/operator/61bc7e31aa45ca353131645d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"operator",
+						"61bc7e31aa45ca353131645d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY1MzdhYjljN2QxNmY2MWU4YmY2NCIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5MzM5NDA0LCJleHAiOjE2MzkzNDMwMDR9.6iMVedepc4Hj6YXYlgKL93vIG0JCmhuZnfGY5Xsso4Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/operator/61b654c1b9c7d16f61e8bf81",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"operator",
+						"61b654c1b9c7d16f61e8bf81"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find one operator",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmM3ZGNkYWE0NWNhMzUzMTMxNjQ1MSIsImZ1bGxuYW1lIjoieW91c3NlZiBtYW5zb3VyaSIsImVtYWlsIjoieW91c3NlZkBsaXZlLmZyIiwiaWF0IjoxNjM5NzQyOTYwLCJleHAiOjE2Mzk3NDY1NjB9.G1ev4blCx-iBGXlk5l-GLGs2Llu-qaQuDLR29JsB-48",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/operator/61bc7e31aa45ca353131645d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"operator",
+						"61bc7e31aa45ca353131645d"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

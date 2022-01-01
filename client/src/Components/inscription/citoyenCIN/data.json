@@ -1,0 +1,322 @@
+[
+    {
+      "gouvernorat": "Ariana",
+      "gouvernorat_code": "in",
+      "url": "google.co.in",
+      "delegations": [
+        {
+          "name": "Ariana Medina",
+          "code": "en",
+          "municipalites": [
+            {
+              "name": "Ariana",
+              "code": "en"
+            }
+          ]
+        },
+        {
+          "name": "Ettadhamen",
+          "code": "so",
+          "municipalites": [
+            {
+              "name": "Tadhamen",
+              "code": "en"
+            }
+          ]
+        },
+        {
+          "name": "KALAA ANDALOUS",
+          "code": "mn",
+          "municipalites": [
+            {
+              "name": "KALAAT EL ANDALOUS",
+              "code": "en"
+            }
+          ]
+        },
+        {
+            "name": "LA SOUKRA ",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "SOUKRA BORJ LOUZIR",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "MNIHLA",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "MNIHLA",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "RAOUED",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "RAOUED",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "SIDI THABET",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "SIDI THABET",
+                "code": "en"
+              }
+            ]
+        }
+      ]
+    },
+    {
+      "gouvernorat": "Ben arous",
+      "gouvernorat_code": "ae",
+      "url": "google.ae",
+      "delegations": [
+        {
+          "name": "BEN AROUS",
+          "code": "en",
+          "municipalites": [
+            {
+              "name": "BEN AROUS",
+              "code": "en"
+            }
+          ]
+        },
+        {
+          "name": "BOUMHEL",
+          "code": "so",
+          "municipalites": [
+            {
+              "name": "BOUMHEL BASATINE",
+              "code": "en"
+            }
+          ]
+        },
+        {
+          "name": "EL MOUROUJ",
+          "code": "mn",
+          "municipalites": [
+            {
+              "name": "MOUROUJ",
+              "code": "en"
+            }
+          ]
+        },
+        {
+            "name": "EZZAHRA ",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "EZZAHRA",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "FOUCHANA",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "FOUCHNA",
+                "code": "en"
+              },
+              {
+                "name": "NAASANE",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "HAMMAM CHAT",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "HAMMAM CHATT",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "HAMMAM LIF",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "HAMMAM LIF",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "MEGRINE",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "MEGRINE",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "MOHAMADIA",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "MOHAMDIA",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "MORNAG",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "MORNAG",
+                "code": "en"
+              },
+              {
+                "name": "KHELIDA",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "NOUVELLE MEDINA",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "BEN AROUS",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "RADES",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "RADES",
+                "code": "en"
+              }
+            ]
+        }
+      ]
+    },
+    {
+      "gouvernorat": "Beja",
+      "gouvernorat_code": "ae",
+      "url": "google.ae",
+      "delegations": [
+        {
+          "name": "AMDOUN",
+          "code": "en",
+          "municipalites": [
+            {
+              "name": "ZAHRET MEDIEN",
+              "code": "en"
+            }
+          ]
+        },
+        {
+          "name": "BEJA NORD",
+          "code": "so",
+          "municipalites": [
+            {
+              "name": "BEJA",
+              "code": "en"
+            }
+          ]
+        },
+        {
+          "name": "BEJA SUD",
+          "code": "mn",
+          "municipalites": [
+            {
+              "name": "MAAGOULA",
+              "code": "en"
+            },{
+                "name": "SIDI ISMAIL",
+                "code": "en"
+              }
+          ]
+        },
+        {
+            "name": "GOUBELLAT ",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "GOUBELLAT",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "MEJEZ ELBAB",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "MEJEZ ELBAB",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "NEFZA",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "NEFZA",
+                "code": "en"
+              },
+              {
+                "name": "OUECHTAT JMILA",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "TEBOURSOUK",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "TEBOURSOUK",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "TESTOUR",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "TESTOUR",
+                "code": "en"
+              },
+              {
+                "name": "SLOUGUEYA",
+                "code": "en"
+              }
+            ]
+        },
+        {
+            "name": "THIBAR",
+            "code": "mn",
+            "municipalites": [
+              {
+                "name": "THIBAR",
+                "code": "en"
+              }
+            ]
+        }
+      ]
+    }
+  ]
